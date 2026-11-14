@@ -1,0 +1,109 @@
+<wsdl:definitions xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:plink="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:wsdlsoap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdlsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap11enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap11env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12env="http://www.w3.org/2003/05/soap-envelope" xmlns:soap12enc="http://www.w3.org/2003/05/soap-encoding" xmlns:wsa="http://schemas.xmlsoap.org/ws/2003/03/addressing" xmlns:xop="http://www.w3.org/2004/08/xop/include" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ejemplo.com/conversor" targetNamespace="http://ejemplo.com/conversor" name="Application">
+<wsdl:types>
+<xs:schema targetNamespace="http://ejemplo.com/conversor" elementFormDefault="qualified">
+<xs:complexType name="celsius_a_fahrenheit">
+<xs:sequence>
+<xs:element name="celsius" type="xs:double" minOccurs="0" nillable="true"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="celsius_a_fahrenheitResponse">
+<xs:sequence>
+<xs:element name="celsius_a_fahrenheitResult" type="xs:double" minOccurs="0" nillable="true"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="fahrenheit_a_celsius">
+<xs:sequence>
+<xs:element name="fahrenheit" type="xs:double" minOccurs="0" nillable="true"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="fahrenheit_a_celsiusResponse">
+<xs:sequence>
+<xs:element name="fahrenheit_a_celsiusResult" type="xs:double" minOccurs="0" nillable="true"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="kilometros_a_millas">
+<xs:sequence>
+<xs:element name="kilometros" type="xs:double" minOccurs="0" nillable="true"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="kilometros_a_millasResponse">
+<xs:sequence>
+<xs:element name="kilometros_a_millasResult" type="xs:double" minOccurs="0" nillable="true"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="celsius_a_fahrenheit" type="tns:celsius_a_fahrenheit"/>
+<xs:element name="celsius_a_fahrenheitResponse" type="tns:celsius_a_fahrenheitResponse"/>
+<xs:element name="fahrenheit_a_celsius" type="tns:fahrenheit_a_celsius"/>
+<xs:element name="fahrenheit_a_celsiusResponse" type="tns:fahrenheit_a_celsiusResponse"/>
+<xs:element name="kilometros_a_millas" type="tns:kilometros_a_millas"/>
+<xs:element name="kilometros_a_millasResponse" type="tns:kilometros_a_millasResponse"/>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="celsius_a_fahrenheit">
+<wsdl:part name="celsius_a_fahrenheit" element="tns:celsius_a_fahrenheit"/>
+</wsdl:message>
+<wsdl:message name="celsius_a_fahrenheitResponse">
+<wsdl:part name="celsius_a_fahrenheitResponse" element="tns:celsius_a_fahrenheitResponse"/>
+</wsdl:message>
+<wsdl:message name="fahrenheit_a_celsius">
+<wsdl:part name="fahrenheit_a_celsius" element="tns:fahrenheit_a_celsius"/>
+</wsdl:message>
+<wsdl:message name="fahrenheit_a_celsiusResponse">
+<wsdl:part name="fahrenheit_a_celsiusResponse" element="tns:fahrenheit_a_celsiusResponse"/>
+</wsdl:message>
+<wsdl:message name="kilometros_a_millas">
+<wsdl:part name="kilometros_a_millas" element="tns:kilometros_a_millas"/>
+</wsdl:message>
+<wsdl:message name="kilometros_a_millasResponse">
+<wsdl:part name="kilometros_a_millasResponse" element="tns:kilometros_a_millasResponse"/>
+</wsdl:message>
+<wsdl:service name="ConversorService">
+<wsdl:port name="Application" binding="tns:Application">
+<wsdlsoap11:address location="http://127.0.0.1:8000/"/>
+</wsdl:port>
+</wsdl:service>
+<wsdl:portType name="Application">
+<wsdl:operation name="celsius_a_fahrenheit" parameterOrder="celsius_a_fahrenheit">
+<wsdl:input name="celsius_a_fahrenheit" message="tns:celsius_a_fahrenheit"/>
+<wsdl:output name="celsius_a_fahrenheitResponse" message="tns:celsius_a_fahrenheitResponse"/>
+</wsdl:operation>
+<wsdl:operation name="fahrenheit_a_celsius" parameterOrder="fahrenheit_a_celsius">
+<wsdl:input name="fahrenheit_a_celsius" message="tns:fahrenheit_a_celsius"/>
+<wsdl:output name="fahrenheit_a_celsiusResponse" message="tns:fahrenheit_a_celsiusResponse"/>
+</wsdl:operation>
+<wsdl:operation name="kilometros_a_millas" parameterOrder="kilometros_a_millas">
+<wsdl:input name="kilometros_a_millas" message="tns:kilometros_a_millas"/>
+<wsdl:output name="kilometros_a_millasResponse" message="tns:kilometros_a_millasResponse"/>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="Application" type="tns:Application">
+<wsdlsoap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="celsius_a_fahrenheit">
+<wsdlsoap11:operation soapAction="celsius_a_fahrenheit" style="document"/>
+<wsdl:input name="celsius_a_fahrenheit">
+<wsdlsoap11:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="celsius_a_fahrenheitResponse">
+<wsdlsoap11:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="fahrenheit_a_celsius">
+<wsdlsoap11:operation soapAction="fahrenheit_a_celsius" style="document"/>
+<wsdl:input name="fahrenheit_a_celsius">
+<wsdlsoap11:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="fahrenheit_a_celsiusResponse">
+<wsdlsoap11:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="kilometros_a_millas">
+<wsdlsoap11:operation soapAction="kilometros_a_millas" style="document"/>
+<wsdl:input name="kilometros_a_millas">
+<wsdlsoap11:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="kilometros_a_millasResponse">
+<wsdlsoap11:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+</wsdl:definitions>
